@@ -7,7 +7,7 @@ const render = (documentRoot)=>{
     render(documentRoot);
   }
 
-  wrapper.append(createHeader(update), createSelect(update), createGameSection());
+  wrapper.append(createHeader(update), createSelect(update), createGameSection(state.students[0].url, state.students[0].name));
   documentRoot.append(wrapper);
 }
 

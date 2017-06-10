@@ -5,11 +5,12 @@ const getJsonList = (urlList, callback)=>{
   const xhr = new XMLHttpRequest();
   xhr.addEventListener('load', ()=>{
     (xhr.status !== 200)? callback(new Error('Error loading JSON from ' + urlList + '(' + xhr.status + ')')):'';
-    callback(null, xhr.response);
+
   });
-  xhr.open('GET', urlList);
-  xhr.responseType = 'json';
-  xhr.send();
+  xhr.open('GET', urlList, false);
+  //xhr.responseType = 'json';
+  xhr.send(null);
   console.log(xhr);
+  callback(null, xhr.response);
   console.log(urlList);
 }
