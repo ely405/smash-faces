@@ -13,8 +13,11 @@ const createGameImage = (url, name, updatePageFunction)=>{
 
   gameSection.append(imageContainer.append(image), inputContainer.append(inputInfo,inputStudentName, checkButton, gameResult));
   let allScore = $('#total-score');
-  checkButton.click((e)=>{
-    dataCompare(name, inputStudentName.val(), gameResult, allScore, selectedOption, updatePageFunction);
+  let optionSelected = $('#sel-headquarter').val();
+
+  checkButton.click(()=>{
+    let scoreResult = dataCompare(name, inputStudentName.val(), gameResult, allScore, selectedOption, updatePageFunction);
+    // gameResult.html('Obtuviste '+ scoreResult + ' puntos.');
   });
   inputStudentName.keyup((event)=>{
     (event.which == 13)? dataCompare(name, inputStudentName.val(), gameResult, allScore, selectedOption, updatePageFunction): '';
@@ -26,7 +29,7 @@ const createGameImage = (url, name, updatePageFunction)=>{
 const createSelect = (updatePageFunction)=>{
   let selectContainer = $('<div/>');
   let chooseHeadquarters = $('<label/>').html('Elige tu sede');
-  let headquarterContainer = $('<select/>');
+  let headquarterContainer = $('<select/>', {'id':'sel-headquarter'});
   let choose = $('<option/>').html('Elige una sede');
   let headquarterLima = $('<option/>', {'value':'Lima'}).html('Lima');
   let headquarterMexico = $('<option/>', {'value':'México'}).html('México');
@@ -59,10 +62,14 @@ const dataCompare = (dataToCompare, inputData, sectionToShowResult, showScoreCon
   }else{
     state.failedAttemps ++;
     sectionToShowResult.html('Sigue intentando');
-    state.gameScore -= 1;
-    showScoreContainer.html(state.gameScore + ' puntos');
-    (state.failedAttemps == 5)?(reRender(imageContainer, filter, updatePageFunction), state.failedAttemps = 0):'';
+    if(state.failedAttemps == 5){
+      reRender(imageContainer, filter, updatePageFunction);
+       state.failedAttemps = 0;
+       state.gameScore -= 1;
+       showScoreContainer.html(state.gameScore + ' puntos');
+    }
   }
+  return state.gameScore;
 }
 
 const reRender = (resultContainer, filterItems, update)=>{

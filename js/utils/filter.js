@@ -11,9 +11,7 @@ const filterStudentRandom = (students, selelectedHeadquarter)=>{
   let randomNumber = Math.floor(Math.random()*filteredStudents.length);
   return filteredStudents.filter((student, index)=>{
     if(randomNumber == index){
-      console.log(filteredStudents.length);
       filteredStudents.splice(index, 1);
-      console.log(state.selectedStudent = filteredStudents);
       return student
     }
   });
