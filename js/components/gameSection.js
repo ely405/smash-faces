@@ -54,9 +54,13 @@ const dataCompare = (dataToCompare, inputData, sectionToShowResult)=>{
 const reRender = (resultContainer, filterItems, update)=>{
   alert('reRender');
   resultContainer.empty();
-  const filteredStudents = filterStudentRandom(state.students, filterItems);
-  console.log(filteredStudents);
+  console.log(filterStudentRandom);
+  const filteredStudent = filterStudentRandom(state.students, filterItems);
+  console.log(filteredStudent);
   if(filterItems != 'Elige una sede'){
-      resultContainer.append(createGameImage(filteredStudents.url, filteredStudents.name));
+    $.each(filteredStudent, (index, student)=>{
+      console.log(student.url);
+      resultContainer.append(createGameImage(student.url, student.name));
+    });
   }
 }
