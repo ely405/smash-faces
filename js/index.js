@@ -1,11 +1,11 @@
 'use strict';
 
+const update = ()=>{
+  render(documentRoot);
+}
 const render = (documentRoot)=>{
   documentRoot.empty();
   const wrapper = $('<div/>', {'class':'wrapper'});
-  const update = ()=>{
-    render(documentRoot);
-  }
 
   wrapper.append(createHeader(update), createSelect(update));
   documentRoot.append(wrapper);
@@ -24,7 +24,6 @@ const documentLoad = ()=>{
     state.students = json
     let rootToLoad = $('.root');
     render(rootToLoad);
-    console.log(state.students);
   });
 }
 
