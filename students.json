@@ -1,10 +1,25 @@
 [{
-  "url":"img/peru/Ana Paula Verme.jpg",
-  "name":"Ana"
-}{
-  "url":"img/peru/Joselyn Inga.JPG",
-  "name":"Joselyn"
+  "url": "img/peru/Ana Paula Verme.jpg",
+  "name": "Ana",
+  "headquarter": "Perú"
 },{
-  "url":"img/peru/Antonella Gutierrez.jpg",
-  "name":"Antonella"
+  "url": "img/peru/Joselyn Inga.JPG",
+  "name": "Joselyn",
+  "headquarter": "Perú"
+},{
+  "url": "img/peru/Antonella Gutierrez.jpg",
+  "name": "Antonella",
+  "headquarter": "Perú"
+},{
+  "url": "img/mexico/Alma Patricia Jimenez.JPG",
+  "name": "Alma",
+  "headquarter": "México"
+},{
+  "url": "img/mexico/Ana Maria Barbosa.JPG",
+  "name": "Ana",
+  "headquarter": "México"
+},{
+  "url": "img/mexico/Analy Miranda.JPG",
+  "name": "Analy",
+  "headquarter": "México"
 }]

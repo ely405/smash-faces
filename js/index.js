@@ -7,7 +7,7 @@ const render = (documentRoot)=>{
     render(documentRoot);
   }
 
-  wrapper.append(createHeader(update), createSelect(update), createGameSection(state.students[0].url, state.students[0].name));
+  wrapper.append(createHeader(update), createSelect(update));
   documentRoot.append(wrapper);
 }
 
@@ -18,12 +18,14 @@ const state={
 
 const documentLoad = ()=>{
   getJsonList('students.json', (error, json)=>{
-    (error)? alert(error.message): '';
+    if(error){
+      alert(error.message);
+    }
     state.students = json
     let rootToLoad = $('.root');
     render(rootToLoad);
+    console.log(state.students);
   });
-  console.log(state.students);
 }
 
 $(documentLoad);
