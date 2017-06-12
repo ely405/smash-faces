@@ -1,7 +1,23 @@
+@import "color";
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.h-100pr{
+  height: 100%;
+}
+.bg-black{
+  background-color: $black;
+}
+.bg-yellow{
+  background-color: $yellow;
+}
+.bg-light-gray{
+  background-color: $light-gray;
+}
+.c-white{
+  color: white;
 }
 .ff-rokkitt{
   font-family: 'Rokkitt', serif;
@@ -9,13 +25,47 @@
 .ff-roboto{
   font-family: 'Roboto', sans-serif;
 }
+.out-none{
+  outline: none;
+}
 .flex-container{
   display: flex;
 }
+.align-center{
+  align-items: center;
+}
+.just-center{
+  justify-content: center;
+}
 .img-responsive{
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 .img-container{
   width: 50%;
+}
+#sel-headquarter{
+  padding: 0.5rem 4rem 0.5rem 1rem;
+}
+//section image
+#image-container{
+  height: 70vh;
+  max-height: 462px;
+}
+//section input
+.input-container{
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  #check-button, #inp-student-name{
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+  #inp-student-name{
+    width: 90%;
+  }
+  #check-button{
+    width: 70%;
+  }
 }
