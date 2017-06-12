@@ -13,7 +13,8 @@ const render = (documentRoot)=>{
 
 const state={
   students: null,
-  selectedStudent:null
+  selectedStudent:null,
+  gameScore: 0,
 }
 
 const documentLoad = ()=>{

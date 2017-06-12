@@ -13,8 +13,11 @@ const createGameImage = (url, name, updatePageFunction)=>{
 
   gameSection.append(imageContainer.append(image), inputContainer.append(inputInfo,inputStudentName, checkButton, gameResult));
   let allScore = $('#total-score');
-  checkButton.click(()=>{
+  checkButton.click((e)=>{
     dataCompare(name, inputStudentName.val(), gameResult, allScore, selectedOption, updatePageFunction);
+  });
+  inputStudentName.keyup((event)=>{
+    (event.which == 13)? dataCompare(name, inputStudentName.val(), gameResult, allScore, selectedOption, updatePageFunction): '';
   })
 
   return gameSection;
@@ -47,17 +50,16 @@ const createScoreContainer = ()=>{
   return scoreContainer;
 }
 
-const dataCompare = (dataToCompare, inputData, sectionToShowResult,showScoreContainer, filter, updatePageFunction)=>{
-  let score = 0;
+const dataCompare = (dataToCompare, inputData, sectionToShowResult, showScoreContainer, filter, updatePageFunction)=>{
   if(dataToCompare.toLowerCase() == inputData.toLowerCase()){
     sectionToShowResult.html('¡Correcto! :)');
-    score += 5;
-    showScoreContainer.html(score + ' puntos');
+    state.gameScore += 5;
+    showScoreContainer.html(state.gameScore + ' puntos');
     reRender(imageContainer, filter, updatePageFunction);
   }else{
     sectionToShowResult.html('Incorrecto :(');
-    score -= 1;
-    showScoreContainer.html(score + ' puntos');
+    state.gameScore -= 1;
+    showScoreContainer.html(state.gameScore + ' puntos');
   }
 }
 
