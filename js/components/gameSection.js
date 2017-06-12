@@ -18,7 +18,6 @@ const createGameImage = (url, name, updatePageFunction)=>{
 
   checkButton.click(()=>{
     let scoreResult = dataCompare(name, inputStudentName.val(), gameResult, allScore, selectedOption, updatePageFunction);
-    // gameResult.html('Obtuviste '+ scoreResult + ' puntos.');
   });
   inputStudentName.keyup((event)=>{
     (event.which == 13)? dataCompare(name, inputStudentName.val(), gameResult, allScore, selectedOption, updatePageFunction): '';
@@ -28,8 +27,8 @@ const createGameImage = (url, name, updatePageFunction)=>{
 }
 
 const createSelect = (updatePageFunction)=>{
-  let selectContainer = $('<div/>');
-  let chooseHeadquarters = $('<label/>').html('Elige tu sede: ');
+  let selectContainer = $('<div/>',{'class':'pd-16'});
+  let chooseHeadquarters = $('<label/>',{'class':'ff-roboto'}).html('Elige tu sede: ');
   let headquarterContainer = $('<select/>', {'id':'sel-headquarter', 'class':'bg-light-gray'});
   let choose = $('<option/>').html('Elige una sede');
   let headquarterLima = $('<option/>', {'value':'Lima'}).html('Lima');
@@ -49,7 +48,7 @@ const createSelect = (updatePageFunction)=>{
 
 const createScoreContainer = ()=>{
   let scoreContainer = $('<div/>');
-  let scoreTitle = $('<span/>').html('Puntos: ');
+  let scoreTitle = $('<span/>',{'class':'ff-roboto'}).html('Puntos: ');
   let score = $('<span/>', {'id':'total-score'});
   scoreContainer.append(scoreTitle, score);
   return scoreContainer;
@@ -75,11 +74,9 @@ const dataCompare = (dataToCompare, inputData, sectionToShowResult, showScoreCon
 }
 
 const reRender = (resultContainer, filterItems, update)=>{
-  alert('reRender');
   resultContainer.empty();
   let filteredSArray = filterByheadquarter(state.students, filterItems);
   const filteredStudent = filterStudentRandom(state.students, filterItems);
-  console.log(state.gameTurn);
   if(state.gameTurn <= filteredSArray.length){
     state.gameTurn ++;
     if(filterItems != 'Elige una sede'){
@@ -90,10 +87,7 @@ const reRender = (resultContainer, filterItems, update)=>{
       resultContainer.append(createScreenToStartAndEnd(update, 'Para iniciar juego seleccione una sede', ''));
     }
   }else{
-    console.log(state.gameTurn +'gameTurn');
-      console.log('juego terminado');
       resultContainer.append(createScreenToStartAndEnd(update, 'Juego terminado', allScore.html()));
-
   }
 }
 
