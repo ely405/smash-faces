@@ -57,9 +57,11 @@ const dataCompare = (dataToCompare, inputData, sectionToShowResult, showScoreCon
     showScoreContainer.html(state.gameScore + ' puntos');
     setTimeout(()=>{reRender(imageContainer, filter, updatePageFunction);}, 2500);
   }else{
+    state.failedAttemps ++;
     sectionToShowResult.html('Sigue intentando');
     state.gameScore -= 1;
     showScoreContainer.html(state.gameScore + ' puntos');
+    (state.failedAttemps == 5)?(reRender(imageContainer, filter, updatePageFunction), state.failedAttemps = 0):'';
   }
 }
 
@@ -67,7 +69,6 @@ const reRender = (resultContainer, filterItems, update)=>{
   alert('reRender');
   resultContainer.empty();
   const filteredStudent = filterStudentRandom(state.students, filterItems);
-  console.log(filteredStudent);
   if(filterItems != 'Elige una sede'){
     $.each(filteredStudent, (index, student)=>{
       resultContainer.append(createGameImage(student.url, student.name, update));

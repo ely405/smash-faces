@@ -15,6 +15,7 @@ const state={
   students: null,
   selectedStudent:null,
   gameScore: 0,
+  failedAttemps: 0
 }
 
 const documentLoad = ()=>{
