@@ -52,12 +52,12 @@ const createScoreContainer = ()=>{
 
 const dataCompare = (dataToCompare, inputData, sectionToShowResult, showScoreContainer, filter, updatePageFunction)=>{
   if(dataToCompare.toLowerCase() == inputData.toLowerCase()){
-    sectionToShowResult.html('¡Correcto! :)');
+    sectionToShowResult.html('¡Excelente, acertaste!');
     state.gameScore += 5;
     showScoreContainer.html(state.gameScore + ' puntos');
-    reRender(imageContainer, filter, updatePageFunction);
+    setTimeout(()=>{reRender(imageContainer, filter, updatePageFunction);}, 2500);
   }else{
-    sectionToShowResult.html('Incorrecto :(');
+    sectionToShowResult.html('Sigue intentando');
     state.gameScore -= 1;
     showScoreContainer.html(state.gameScore + ' puntos');
   }
@@ -67,6 +67,7 @@ const reRender = (resultContainer, filterItems, update)=>{
   alert('reRender');
   resultContainer.empty();
   const filteredStudent = filterStudentRandom(state.students, filterItems);
+  console.log(filteredStudent);
   if(filterItems != 'Elige una sede'){
     $.each(filteredStudent, (index, student)=>{
       resultContainer.append(createGameImage(student.url, student.name, update));

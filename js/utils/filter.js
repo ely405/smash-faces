@@ -13,6 +13,7 @@ const filterStudentRandom = (students, selelectedHeadquarter)=>{
     if(randomNumber == index){
       console.log(filteredStudents.length);
       filteredStudents.splice(index, 1);
+      console.log(state.selectedStudent = filteredStudents);
       return student
     }
   });
